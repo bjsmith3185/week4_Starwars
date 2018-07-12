@@ -1,0 +1,73 @@
+
+
+
+
+user picks choice
+    turn border green
+    turn others red
+
+user picks 1st enemy
+    keep border red
+    hide remaining enemy
+
+user hits attack
+    shake the div for the enemy
+    flash the attack button color?
+
+    (when a element has a health point less than 20, flash the border)
+
+when user defeats enemy
+    increase the size of the users div
+    congrats message
+    display stats: hp, attack power, etc
+
+display the remaining enemys to select from
+    show the remaining enemies
+    
+    hide the remaining enemy once selected
+
+on final phase
+    display, final round
+
+user wins
+    display user in center of screen, 2x size
+
+enemy wins
+    display enemy in center of screen
+
+=======================
+
+stages
+    selectUser (picking the users choice)
+    selectEnemy( picking the 1st enemy)
+    round 1 (2 enemies to go)
+    round 2 (1 enemy to go)
+    round 3 (last enemy)
+    winning (show user winning)
+    loss (if enemy wins)
+
+
+======================
+
+screens
+    welcome screen
+        describe the game
+        start button
+
+select player screen (beginning and each time a new round begins)
+    show all choices
+
+game screen
+    show users choice
+    show enemy selected
+
+loss screen
+    show the character that won
+
+win screen
+    show users choice only
+    display stats
+
+========================
+
+

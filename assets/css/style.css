@@ -1,0 +1,56 @@
+
+.container-welcome {
+    background: lightblue;
+}
+
+.container-select-user {
+    background: lightgreen;
+}
+
+.container-select-enemy {
+    background: lightgrey;
+}
+
+.container-game {
+    background: lightpink;
+}
+
+.container-win {
+    background: gold;
+}
+
+.container-loss {
+    background: darkgrey;
+}
+
+
+.sprite {
+    width: 200px;
+    height: 200px;
+    background: lightgray;
+    border: 1px solid black;
+    display: inline-block;
+
+}
+
+.sprite-img {
+    width: 150px;
+    height: 150px;
+    /* margin: 50px; */
+    border: 1px solid black
+   
+}
+
+
+
+
+
+.winning-img {
+    width: 400px;
+    height: 400px;
+}
+
+.loss-img {
+    width: 400px;
+    height: 400px;
+}
