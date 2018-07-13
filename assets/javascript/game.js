@@ -12,15 +12,17 @@ $( document ).ready(function() {
     var userSelected = false;
     var userHP;
     var userAttack;
-    var usercounter;
+    var userCounter;
     var userImg;
+    var userName;
     var otherCharacters;
 
     var enemyHP;
     var enemyAttack;
-    var enemycounter;
+    var enemyCounter;
+    var enemyName;
 
-    var enemyCount = 3;
+    var count = 3;
 
 
 
@@ -38,12 +40,13 @@ $( document ).ready(function() {
 
     $(".container-select-user").on("click", ".sprite", function() {
         
-        userHP = $(this).attr("data-health");
-        userAttack = $(this).attr("data-attack");
-        usercounter = $(this).attr("data-counter");
-        // userImg = $(this).attr()
-        console.log("User HP: " + userHP + "  Attack: " + userAttack + "  counter: " + usercounter);
-
+        userHP = parseInt($(this).attr("data-health"));
+        userAttack = parseInt($(this).attr("data-attack"));
+        userCounter = parseInt($(this).attr("data-counter"));
+        userName = $(this).attr("value");
+        
+        console.log(typeof(userHP));
+        
         $(this).detach().appendTo(".userSprite-game");
         
 
@@ -63,11 +66,12 @@ $( document ).ready(function() {
 
 $(".container-select-enemy").on("click", ".sprite",  function() {
         
-    enemyHP = $(this).attr("data-health");
-    enemyAttack = $(this).attr("data-attack");
-    enemycounter = $(this).attr("data-counter");
+    enemyHP = parseInt($(this).attr("data-health"));
+    enemyAttack = parseInt($(this).attr("data-attack"));
+    enemyCounter = parseInt($(this).attr("data-counter"));
+    enemyName = $(this).attr("value");
     
-    console.log("Enemy HP: " + enemyHP + "  Attack: " + enemyAttack + "  counter: " + enemycounter);
+   
 
     $(this).detach().appendTo(".enemySprite-game");
     
@@ -83,14 +87,18 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
 
     $("#attack").on("click", function() {
         enemyHP -= userAttack;
-        userHP -= enemycounter;
-        userAttack =+ enemycounter;
+        userHP -= enemyCounter;
+        userAttack += userAttack;
 
-        userImg = $(".user .sprite-img").attr("src");
-        console.log("this is img src: " + userImg);
+        console.log("User HP: " + userHP + "  Attack: " + userAttack + "  counter: " + userCounter + "  name: " + userName);
 
-        enemyImg = $(".enemy .sprite-img").attr("src");
-        console.log("this is enemy img src: " + enemyImg);
+        console.log("Enemy HP: " + enemyHP + "  Attack: " + enemyAttack + "  counter: " + enemyCounter + "  name: " + enemyName);
+
+        // userImg = $(".user .sprite-img").attr("src");
+        // console.log("this is img src: " + userImg);
+
+        // enemyImg = $(".enemy .sprite-img").attr("src");
+        // console.log("this is enemy img src: " + enemyImg);
 
         $(".user .info").text("HP: " + userHP);
         $(".enemy .info").text("HP: " + enemyHP);
@@ -101,15 +109,18 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
             gameOver = true;
             $(".container-loss").show();
             $(".container-game").hide();
-            $(".loss-img").attr(enemyImg);
+            var losser = $(".loss-img");
+            setImage(losser, enemyName);
 
         } else if (enemyHP < 0) {
             nextEnemy = true;
-            enemyCount--;
+            count--;
 
-            if (enemyCount === 0) {
+            if (count === 0) {
                 $(".container-win").show()
                 $(".container-game").hide();
+                var winner = $(".winning-img");
+                setImage(winner, userName);
 
             } else {
                 $(".enemySprite-game").empty();
@@ -121,36 +132,20 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
         }
        
 
-
-
-
-
+        function setImage(y,x) {
+          
+            if (x === "sprite-1") {
+                $(y).attr("src", "assets/images/bear.jpg");
+            } else if (x === "sprite-2") {
+                $(y).attr("src", "assets/images/goldie.jpg");
+            } else if (x === "sprite-3") {
+                $(y).attr("src", "assets/images/humpty.jpg");
+            } else if (x === "sprite-4") {
+                $(y).attr("src", "assets/images/papabear.jpg");
+            }
+        };
 
     });
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
 
