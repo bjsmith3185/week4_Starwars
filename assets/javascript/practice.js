@@ -1,5 +1,4 @@
 
-
 $( document ).ready(function() {
    
     $(".container-welcome").show();
@@ -23,6 +22,8 @@ $( document ).ready(function() {
     var enemyName;
 
     var count = 3;
+
+    var sprite1;
 
 
 
@@ -71,6 +72,8 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
     enemyCounter = parseInt($(this).attr("data-counter"));
     enemyName = $(this).attr("value");
     
+    var enemy = $(this).attr("class"); //==============
+    console.log("enemy var: " + enemy)
    
 
     $(this).detach().appendTo(".enemySprite-game");
@@ -86,7 +89,8 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
 
 
     $("#attack").on("click", function() {
-        console.log("this is enemyName: " + enemyName + "user name: " + userName);
+        
+        // console.log("enemyName: " + enemyName + " ,username: " + userName);
         enemyHP -= userAttack;
         userHP -= enemyCounter;
         userAttack += userAttack;
@@ -108,6 +112,7 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
             // if statements for the game 
         if (userHP < 0) {
             gameOver = true;
+            $(this).detach().appendTo(".container-select-user");
             $(".container-loss").show();
             $(".container-game").hide();
             var losser = $(".loss-img");
@@ -118,12 +123,16 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
             count--;
 
             if (count === 0) {
+
+                // $(this).detach().appendTo(".container-select-user");
                 $(".container-win").show()
                 $(".container-game").hide();
                 var winner = $(".winning-img");
                 setImage(winner, userName);
 
             } else {
+                // console.log(this);
+                // $(this).detach().appendTo(".container-select-user");
                 $(".enemySprite-game").empty();
                 $(".container-select-enemy").show();
                 $(".container-game").hide();
@@ -162,6 +171,9 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
     $("#reset-win").on("click", function() {
         reset();
     });
+    
+
+
 
     $("#reset-loss").on("click", function() {
         reset();
@@ -169,3 +181,16 @@ $(".container-select-enemy").on("click", ".sprite",  function() {
 
 });
 
+$("#reset-win").on("click", function() {
+    // var row1a = $("#row1-col1");
+    $("#row1-col1").html("<div class='sprite sprite-1-container text-center' id='sprite-1' value='sprite-1' data-health='22' data-attack='13' data-counter='2' data-info='info-1'>",
+    "<p class='title-1 text-center' >Walker</p>",
+    "<img class='sprite-img sprite-1' src='assets/images/walker.jpg'>",
+    "<p class='info info-1 text-center'></p>",
+    "</div>");
+    // row1a.append(sprite1);
+
+
+
+    reset();
+});
